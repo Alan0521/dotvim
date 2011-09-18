@@ -1,7 +1,7 @@
 """"""""""""""""""""""""""""""""""""""
 " Version: 1.0.0
 """"""""""""""""""""""""""""""""""""""
-" 2011-09-14 17:06
+" 2011-09-18 22:38
 """"""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""
@@ -106,6 +106,8 @@ set cindent
 autocmd FileType c,cpp  setl fdm=syntax | setl fen 
 
 "set guifont=terminus\ 10
+set guifont=MONACO\ 10
+set guifontwide=youyuan\ 10
 "自动补全
 set completeopt=longest,menuone
 
@@ -150,9 +152,9 @@ endfunction
 "Fast edit vimrc
 if MySys() == 'linux'
     "Fast reloading of the .vimrc
-    map <silent> <leader>ss :source ~/.vimrc<cr>
+    map <silent> <leader>sv :source ~/.vimrc<cr>
     "Fast editing of .vimrc
-    map <silent> <leader>ee :call SwitchToBuf("~/.vimrc")<cr>
+    map <silent> <leader>ev :call SwitchToBuf("~/.vimrc")<cr>
     "When .vimrc is edited, reload it
     autocmd! bufwritepost .vimrc source ~/.vimrc
 elseif MySys() == 'windows'
