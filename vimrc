@@ -1,7 +1,7 @@
 """"""""""""""""""""""""""""""""""""""
 " Version: 1.0.0
 """"""""""""""""""""""""""""""""""""""
-" 2011-09-18 22:38
+" 2011-09-19 10:35
 """"""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""
@@ -9,7 +9,7 @@
 """"""""""""""""""""""""""""""""""""""
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
-"set runtimepath+=~/.vim/vimgdb_runtime
+set runtimepath+=~/.vim/vimgdb_runtime
 set runtimepath+=~/.vim/extra
 
 """"""""""""""""""""""""""""""""""""""
@@ -44,9 +44,9 @@ autocmd BufWritePre Makefile :%s/\s\+$//e
 "set lines=40
 "set columns=80
 
-"""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""
 " Style 界面
-"""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""
 "显示行号
 set number
 "显示光标位置
@@ -87,9 +87,9 @@ set t_Co=256
 set background=dark
 colorscheme desert 
 
-"""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""
 " Text 文本
-"""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""
 "设置Tab键
 "set expandtab
 "set smarttab
@@ -111,9 +111,9 @@ set guifontwide=youyuan\ 10
 "自动补全
 set completeopt=longest,menuone
 
-"""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""
 " From vi/vim enhanced
-"""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""
 " tform
 function! MySys()
   if has("win32")
@@ -174,9 +174,9 @@ if MySys() == 'windows'
     behave mswin
 endif 
 
-"""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""
 " Edit 编辑
-"""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""
 set noswapfile
 ""把undo历史保存到文件里，这样undo不会因为vim的关闭而丢失
 set undofile
@@ -243,9 +243,9 @@ function! TitleDet()
     call AddTitle()
 endfunction
 
-"""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""
 " Others
-"""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""
 ""下面的三行开启鼠标支持，gvim下右键可以弹出菜单，方便复制粘贴等
 set mouse=a
 set mousemodel=popup
@@ -261,7 +261,7 @@ set mousemodel=popup
 
 """"""""""""""""""""""""""""""""""""""
 " Shortcut 快捷键
-"""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""
 "map <F3> :call FormartSrc()<CR>
 
 " insert mode shortcut
@@ -286,9 +286,9 @@ nmap <silent> <leader>tl :TlistToggle<cr>
 "let g:netrw_winsize = 30
 "nmap <silent> <leader>fe :Sexplore!<cr>
 
-""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""
 " BufExplorer
-""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""
 let g:bufExplorerDefaultHelp=0       " Do not show default help.
 let g:bufExplorerShowRelativePath=1  " Show relative paths.
 let g:bufExplorerSortBy='mru'        " Sort by most recently used.
@@ -298,14 +298,14 @@ let g:bufExplorerSplitVertSize = 30  " Split width
 let g:bufExplorerUseCurrentWindow=1  " Open in new window.
 autocmd BufWinEnter \[Buf\ List\] setl nonumber 
 
-""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""
 " MiniBufferExplorer
-""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""
 "let g:miniBufExplorerMoreThanOne=0
 
-""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""
 " NERDTree
-""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""
 "NERD Tree设置名称
 let g:NERDTree_title="[NERD Tree]" 
 "NERD Tree配置
@@ -318,9 +318,9 @@ function! NERDTree_IsValid()
 endfunction
 
 
-""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""
 " winManager setting
-""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""
 let g:winManagerWindowLayout = "NERDTree,BufExplorer|TagList"
 "let g:winManagerWindowLayout = "BufExplorer,FileExplorer|TagList"
 "let g:winManagerWidth = 30
@@ -330,9 +330,9 @@ nmap <C-W><C-B> :BottomExplorerWindow<cr>
 "nmap <silent> <leader>wm :WMToggle<cr> 
 nmap <silent> <leader>wm :if IsWinManagerVisible() <BAR> WMToggle<CR> <BAR> else <BAR> WMToggle<CR>:q<CR> endif <CR><CR>
 
-""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""
 " lookupfile setting
-""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""
 let g:LookupFile_MinPatLength = 2               "最少输入2个字符才开始查找
 let g:LookupFile_PreserveLastPattern = 0        "不保存上次查找的字符串
 let g:LookupFile_PreservePatternHistory = 1     "保存查找历史
@@ -371,17 +371,17 @@ function! LookupFile_IgnoreCaseFunc(pattern)
 endfunction
 let g:LookupFile_LookupFunc = 'LookupFile_IgnoreCaseFunc' 
 
-""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""
 " lookupfile setting
-""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""
 autocmd FileType c,cpp  map <buffer> <leader><space> :w<cr>:make<cr>
 nmap <leader>cn :cn<cr>
 nmap <leader>cp :cp<cr>
 nmap <leader>cw :cw 10<cr> 
 
-""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""
 " showmarks setting
-""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""
 " Enable ShowMarks
 let showmarks_enable = 1
 " Show which marks
@@ -392,22 +392,22 @@ let showmarks_ignore_type = "hqm"
 let showmarks_hlline_lower = 1
 let showmarks_hlline_upper = 1 
 
-""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""
 " markbrowser setting
-""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""
 nmap <silent> <leader>mk :MarksBrowser<cr> 
 
-""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""
 " vimgdb setting
-""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""
 let g:vimgdb_debug_file = "" 
 run macros/gdb_mappings.vim 
 
-""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""
 " stardict 
-""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""
 if has('gui_running')
-	function Mybln()
+	function! Mybln()
 		let expl=system('sdcv -n ' .
 					\ v:beval_text .
 					\ '|fmt -cstw 40')
@@ -431,9 +431,9 @@ else
 	nmap T :call Mydict()<CR>
 endif 
 
-""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""
 " FuzzyFinder 
-""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""
 nmap <silent> <leader>fb :FufBuffer<CR>
 nmap <silent> <leader>ff :FufFile<CR>
 nmap <silent> <leader>fd :FufDir<CR>
@@ -459,6 +459,12 @@ let g:fuf_com_list=[':FufBuffer',':FufFile',':FufCoverageFile',':FufDir',
 "nnoremap <silent> <F4> :call fuf#givencmd#launch('', 0, '选择命令>', g:fuf_com_list)<CR>
 nnoremap <silent> <leader>Fz :call fuf#givencmd#launch('', 0, '选择命令>', GetAllCommands())<CR>
 nnoremap <silent> <leader>fz :call fuf#givencmd#launch('', 0, '选择命令>', g:fuf_com_list)<CR>
+
+""""""""""""""""""""""""""""""""""""""
+" Snipmate
+""""""""""""""""""""""""""""""""""""""
+let g:SuperTabMappingForward="<tab>" 
+let g:SuperTabMappingBackward="<s-tab>"
 
 """"""""""""""""""""""""""""""""""""""
 " The end 
