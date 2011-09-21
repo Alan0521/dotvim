@@ -1,7 +1,7 @@
 """"""""""""""""""""""""""""""""""""""
-" Version: 1.0.0
+" Version: 1.0.1
 """"""""""""""""""""""""""""""""""""""
-" 2011-09-19 10:35
+" 2011-09-21 15:28
 """"""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""
@@ -12,10 +12,20 @@ call pathogen#helptags()
 set runtimepath+=~/.vim/vimgdb_runtime
 set runtimepath+=~/.vim/extra
 
+function! MySys()
+  if has("win32")
+    return "windows"
+  else
+    return "linux"
+  endif
+endfunction
+
 """"""""""""""""""""""""""""""""""""""
 " Basic 常规
 """"""""""""""""""""""""""""""""""""""
 "编码
+"set encoding=utf-8
+"set fileencoding=cp936
 set fileencodings=ucs-bom,utf-8,gb18030,gb2312,gbk,cp936
 "文件类型识别
 filetype plugin indent on
@@ -43,6 +53,15 @@ autocmd BufWritePre Makefile :%s/\s\+$//e
 "设置窗口大小
 "set lines=40
 "set columns=80
+"set gvim
+if has("gui_running")
+    set guioptions-=m " 隐藏菜单栏
+    set guioptions-=T " 隐藏工具栏
+    set guioptions-=L " 隐藏左侧滚动条
+    set guioptions-=r " 隐藏右侧滚动条
+    set guioptions-=b " 隐藏底部滚动条
+    set showtabline=0 " 隐藏Tab栏
+endif
 
 """"""""""""""""""""""""""""""""""""""
 " Style 界面
@@ -106,8 +125,15 @@ set cindent
 autocmd FileType c,cpp  setl fdm=syntax | setl fen 
 
 "set guifont=terminus\ 10
-set guifont=MONACO\ 10
-set guifontwide=youyuan\ 10
+if MySys() == 'linux'
+	set guifont=MONACO\ 10
+	set guifontwide=youyuan\ 10
+elseif MySys() == 'windows'
+	set guifont=MONACO:h10
+	"set guifontwide=YouYuan:h24:cGB2312
+	"set gfw=Yahei_Mono:h15:cGB2312
+endif 
+
 "自动补全
 set completeopt=longest,menuone
 
@@ -115,14 +141,6 @@ set completeopt=longest,menuone
 " From vi/vim enhanced
 """"""""""""""""""""""""""""""""""""""
 " tform
-function! MySys()
-  if has("win32")
-    return "windows"
-  else
-    return "linux"
-  endif
-endfunction
-
 function! SwitchToBuf(filename)
     "let fullfn = substitute(a:filename, "^\\~/", $HOME . "/", "")
     " find in current tab
@@ -161,11 +179,11 @@ elseif MySys() == 'windows'
     " Set helplang
     set helplang=cn
     "Fast reloading of the _vimrs
-    map <silent> <leader>ss :source ~/_vimrc<cr>
+    map <silent> <leader>sv :source ~/_gvimrc<cr>
     "Fast editing of _vimrc
-    map <silent> <leader>ee :call SwitchToBuf("~/_vimrc")<cr>
+    map <silent> <leader>ev :call SwitchToBuf("~/_gvimrc")<cr>
     "When _vimrc is edited, reload it
-    autocmd! bufwritepost _vimrc source ~/_vimrc
+    autocmd! bufwritepost _gvimrc source ~/_gvimrc
 endif
 
 " For windows version
@@ -274,6 +292,7 @@ set mousemodel=popup
 nmap <silent> <leader>q :q<cr> 
 nmap <silent> <leader>w :w<cr> 
 nmap <silent> <leader>bn :bn<cr> 
+nmap <silent> <leader>bd :bd<cr> 
 
 nmap <silent> <leader>fe :NERDTreeToggle<cr> 
 nmap <silent> <leader>tl :TlistToggle<cr> 
@@ -406,29 +425,31 @@ run macros/gdb_mappings.vim
 """"""""""""""""""""""""""""""""""""""
 " stardict 
 """"""""""""""""""""""""""""""""""""""
-if has('gui_running')
-	function! Mybln()
-		let expl=system('sdcv -n ' .
-					\ v:beval_text .
-					\ '|fmt -cstw 40')
-		return expl
-	endfunction
+if MySys() == 'linux'
+	if has('gui_running')
+		function! Mybln()
+			let expl=system('sdcv -n ' .
+						\ v:beval_text .
+						\ '|fmt -cstw 40')
+			return expl
+		endfunction
 
-	set bexpr=Mybln()
-	set beval
-else
-	function! Mydict()
-		let expl=system('sdcv -n ' .
-					\ expand("<cword>"))
-		windo if
-					\ expand("%")=="diCt-tmp" |
-					\ q!|endif
-		25vsp diCt-tmp
-		setlocal buftype=nofile bufhidden=hide noswapfile
-		1s/^/\=expl/
-		1
-	endfunction
-	nmap T :call Mydict()<CR>
+		set bexpr=Mybln()
+		set beval
+	else
+		function! Mydict()
+			let expl=system('sdcv -n ' .
+						\ expand("<cword>"))
+			windo if
+						\ expand("%")=="diCt-tmp" |
+						\ q!|endif
+			25vsp diCt-tmp
+			setlocal buftype=nofile bufhidden=hide noswapfile
+			1s/^/\=expl/
+			1
+		endfunction
+		nmap T :call Mydict()<CR>
+	endif 
 endif 
 
 """"""""""""""""""""""""""""""""""""""
