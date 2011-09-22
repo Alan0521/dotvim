@@ -1,7 +1,7 @@
 """"""""""""""""""""""""""""""""""""""
 " Version: 1.0.1
 """"""""""""""""""""""""""""""""""""""
-" 2011-09-21 15:28
+" 2011-09-22 17:12
 """"""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""
@@ -12,6 +12,7 @@ call pathogen#helptags()
 set runtimepath+=~/.vim/vimgdb_runtime
 set runtimepath+=~/.vim/extra
 
+"judge the system 
 function! MySys()
   if has("win32")
     return "windows"
@@ -19,6 +20,12 @@ function! MySys()
     return "linux"
   endif
 endfunction
+
+"set the menu & the message to English
+set langmenu=en_US
+let $LANG = 'en_US'
+source $VIMRUNTIME/delmenu.vim
+source $VIMRUNTIME/menu.vim 
 
 """"""""""""""""""""""""""""""""""""""
 " Basic 常规
@@ -53,6 +60,7 @@ autocmd BufWritePre Makefile :%s/\s\+$//e
 "设置窗口大小
 "set lines=40
 "set columns=80
+
 "set gvim
 if has("gui_running")
     set guioptions-=m " 隐藏菜单栏
@@ -60,7 +68,7 @@ if has("gui_running")
     set guioptions-=L " 隐藏左侧滚动条
     set guioptions-=r " 隐藏右侧滚动条
     set guioptions-=b " 隐藏底部滚动条
-    set showtabline=0 " 隐藏Tab栏
+    "set showtabline=0 " 隐藏Tab栏
 endif
 
 """"""""""""""""""""""""""""""""""""""
@@ -486,6 +494,15 @@ nnoremap <silent> <leader>fz :call fuf#givencmd#launch('', 0, '选择命令>', g
 """"""""""""""""""""""""""""""""""""""
 let g:SuperTabMappingForward="<tab>" 
 let g:SuperTabMappingBackward="<s-tab>"
+
+""""""""""""""""""""""""""""""""""""""
+" AhthorInfo
+""""""""""""""""""""""""""""""""""""""
+ let g:vimrc_author='Alan' 
+ let g:vimrc_email='lanquan.yang@163.com' 
+ let g:vimrc_homepage='http://www.google.com' 
+  
+ nmap <F4> :AuthorInfoDetect<cr> 
 
 """"""""""""""""""""""""""""""""""""""
 " The end 
