@@ -1,7 +1,7 @@
 """"""""""""""""""""""""""""""""""""""
 " Version: 1.0.1
 """"""""""""""""""""""""""""""""""""""
-" 2011-09-23 17:27
+" 2011-09-23 22:38
 """"""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""
@@ -104,6 +104,8 @@ set magic
 "set noerrorbells
 "set novisualbell
 "set vb t_vb=
+autocmd GUIEnter * set vb t_vb= 
+"autocmd VimEnter * set vb t_vb= 
 "自动匹配括号
 set showmatch
 set mat=2
@@ -300,6 +302,7 @@ set mousemodel=popup
 
 nmap <silent> <leader>q :q<cr> 
 nmap <silent> <leader>w :w<cr> 
+nmap <silent> <leader>p :set paste<cr> 
 nmap <silent> <leader>bn :bn<cr> 
 nmap <silent> <leader>bd :bd<cr> 
 
