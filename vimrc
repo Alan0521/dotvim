@@ -1,7 +1,7 @@
 """"""""""""""""""""""""""""""""""""""
 " Version: 1.0.1
 """"""""""""""""""""""""""""""""""""""
-" 2011-09-22 17:12
+" 2011-09-23 17:27
 """"""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""
@@ -101,9 +101,9 @@ set incsearch
 "设置magic
 set magic
 "关闭提示音
-set noerrorbells
-set novisualbell
-set vb t_vb=
+"set noerrorbells
+"set novisualbell
+"set vb t_vb=
 "自动匹配括号
 set showmatch
 set mat=2
@@ -112,6 +112,7 @@ syntax enable
 "设置颜色主题
 set t_Co=256
 set background=dark
+"source ~/.vim/plugin/CSApprox.vim  
 colorscheme desert 
 
 """"""""""""""""""""""""""""""""""""""
@@ -195,10 +196,10 @@ elseif MySys() == 'windows'
 endif
 
 " For windows version
-if MySys() == 'windows'
-    source $VIMRUNTIME/mswin.vim
-    behave mswin
-endif 
+"if MySys() == 'windows'
+"    source $VIMRUNTIME/mswin.vim
+"    behave mswin
+"endif 
 
 """"""""""""""""""""""""""""""""""""""
 " Edit 编辑
@@ -418,6 +419,21 @@ let showmarks_ignore_type = "hqm"
 " Hilight lower & upper marks
 let showmarks_hlline_lower = 1
 let showmarks_hlline_upper = 1 
+" Set hilight 
+if has('gui_running')
+	hi default ShowMarksHLl ctermfg=darkblue ctermbg=blue cterm=bold guifg=blue guibg=lightblue gui=bold
+	hi default ShowMarksHLu ctermfg=darkblue ctermbg=blue cterm=bold guifg=blue guibg=lightblue gui=bold
+	hi default ShowMarksHLo ctermfg=darkblue ctermbg=blue cterm=bold guifg=blue guibg=lightblue gui=bold
+	hi default ShowMarksHLm ctermfg=darkblue ctermbg=blue cterm=bold guifg=blue guibg=lightblue gui=bold
+else 
+	hi default ShowMarksHLl ctermfg=yellow ctermbg=blue cterm=bold guifg=blue guibg=lightblue gui=bold
+	hi default ShowMarksHLu ctermfg=yellow ctermbg=blue cterm=bold guifg=blue guibg=lightblue gui=bold
+	hi default ShowMarksHLo ctermfg=yellow ctermbg=blue cterm=bold guifg=blue guibg=lightblue gui=bold
+	hi default ShowMarksHLm ctermfg=yellow ctermbg=blue cterm=bold guifg=blue guibg=lightblue gui=bold
+	" Yellow
+	"hi ShowMarksHLl ctermbg=Yellow   ctermfg=Black  guibg=#FFDB72    guifg=Black
+	"hi ShowMarksHLu ctermbg=Magenta  ctermfg=Black  guibg=#FFB3FF    guifg=Black
+endif 
 
 """"""""""""""""""""""""""""""""""""""
 " markbrowser setting
