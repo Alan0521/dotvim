@@ -1,7 +1,7 @@
 """"""""""""""""""""""""""""""""""""""
 " Version: 1.0.1
 """"""""""""""""""""""""""""""""""""""
-" 2011-09-23 22:38
+" 2011-09-24 09:30
 """"""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""
@@ -101,11 +101,11 @@ set incsearch
 "设置magic
 set magic
 "关闭提示音
-"set noerrorbells
-"set novisualbell
+set noerrorbells
+set novisualbell
 "set vb t_vb=
-autocmd GUIEnter * set vb t_vb= 
-"autocmd VimEnter * set vb t_vb= 
+"autocmd GUIEnter * set vb t_vb= 
+autocmd VimEnter * set vb t_vb= 
 "自动匹配括号
 set showmatch
 set mat=2
@@ -190,11 +190,11 @@ elseif MySys() == 'windows'
     " Set helplang
     set helplang=cn
     "Fast reloading of the _vimrs
-    map <silent> <leader>sv :source ~/_gvimrc<cr>
+    map <silent> <leader>sv :source ~/_vimrc<cr>
     "Fast editing of _vimrc
-    map <silent> <leader>ev :call SwitchToBuf("~/_gvimrc")<cr>
+    map <silent> <leader>ev :call SwitchToBuf("~/_vimrc")<cr>
     "When _vimrc is edited, reload it
-    autocmd! bufwritepost _gvimrc source ~/_gvimrc
+    autocmd! bufwritepost _vimrc source ~/_vimrc
 endif
 
 " For windows version
