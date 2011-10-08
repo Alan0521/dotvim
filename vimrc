@@ -1,7 +1,7 @@
 """"""""""""""""""""""""""""""""""""""
 " Version: 1.0.1
 """"""""""""""""""""""""""""""""""""""
-" 2011-09-24 09:30
+" 2011-10-07 18:37
 """"""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""
@@ -37,7 +37,7 @@ set fileencodings=ucs-bom,utf-8,gb18030,gb2312,gbk,cp936
 "文件类型识别
 filetype plugin indent on
 "设置shell
-set shell=bash
+"set shell=bash
 "关闭兼容模式
 set nocompatible
 "外部修改时自动读取
@@ -280,18 +280,19 @@ set mouse=a
 set mousemodel=popup
 
 "定义FormartSrc()
-"function! FormartSrc()
-"	exec \"w"
-"	if &filetype == 'c'
-"		exec \"!astyle --pad=oper --pad=paren-out --indent=tab --suffix=none %"
-"		exec \"e! %"
-"	endif
-"endfunc
+function! FormartSrc()
+	exec "w"
+	if &filetype == 'c'
+		exec "!astyle --pad-oper --pad-paren-out --indent=tab --suffix=none %"
+		exec "e! %"
+	endif
+endfunc
 
 """"""""""""""""""""""""""""""""""""""
 " Shortcut 快捷键
 """"""""""""""""""""""""""""""""""""""
 "map <F3> :call FormartSrc()<CR>
+command! Astyle call FormartSrc()
 
 " insert mode shortcut
 "inoremap <C-h> <Left>
