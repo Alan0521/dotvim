@@ -1,7 +1,7 @@
 """"""""""""""""""""""""""""""""""""""
 " Version: 1.0.1
 """"""""""""""""""""""""""""""""""""""
-" 2011-11-30 10:22
+" 2012-03-19 15:47
 """"""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""
@@ -14,11 +14,11 @@ set runtimepath+=~/.vim/extra
 
 "judge the system 
 function! MySys()
-  if has("win32")
-    return "windows"
-  else
-    return "linux"
-  endif
+	if has("win32")
+		return "windows"
+	else
+		return "linux"
+	endif
 endfunction
 
 "set the menu & the message to English
@@ -63,12 +63,12 @@ autocmd BufWritePre Makefile :%s/\s\+$//e
 
 "set gvim
 if has("gui_running")
-    set guioptions-=m " 隐藏菜单栏
-    set guioptions-=T " 隐藏工具栏
-    set guioptions-=L " 隐藏左侧滚动条
-    set guioptions-=r " 隐藏右侧滚动条
-    set guioptions-=b " 隐藏底部滚动条
-    "set showtabline=0 " 隐藏Tab栏
+	set guioptions-=m " 隐藏菜单栏
+	set guioptions-=T " 隐藏工具栏
+	set guioptions-=L " 隐藏左侧滚动条
+	set guioptions-=r " 隐藏右侧滚动条
+	set guioptions-=b " 隐藏底部滚动条
+	"set showtabline=0 " 隐藏Tab栏
 endif
 
 """"""""""""""""""""""""""""""""""""""
@@ -133,14 +133,20 @@ set linebreak
 "C风格缩进
 set cindent
 "set fold
-autocmd FileType c,cpp  setl fdm=syntax | setl fen 
+"autocmd FileType c,cpp  setl fdm=syntax | setl fen 
+autocmd FileType c,cpp  setl fdm=syntax | setl fen | setl foldlevel=100
 
 "set guifont=terminus\ 10
 if MySys() == 'linux'
 	set guifont=MONACO\ 10
 	set guifontwide=youyuan\ 10
 elseif MySys() == 'windows'
-	set guifont=MONACO:h10
+	"set guifont=MONACO:h10
+	"set guifont=consolas:h12
+	set guifont=Courier_New:h12:cANSI
+	"set guifontwide=YaHei\ Consolas\ Hybrid:h10
+	"set guifontwide=YaHei:h10
+	"set guifont=monaco:h10:cANSI
 	"set guifontwide=YouYuan:h24:cGB2312
 	"set gfw=Yahei_Mono:h15:cGB2312
 endif 
@@ -603,7 +609,13 @@ let g:acp_enableAtStartup = 0
 """"""""""""""""""""""""""""""""""""""
 " Code_complete
 """"""""""""""""""""""""""""""""""""""
-let g:completekey = "<c-j>"
+let g:completekey = "<C-j>"
+
+""""""""""""""""""""""""""""""""""""""
+" Code_complete
+""""""""""""""""""""""""""""""""""""""
+imap = <M-=>3<BS>
+imap - <M-->3<BS>
 
 """"""""""""""""""""""""""""""""""""""
 " The end 
