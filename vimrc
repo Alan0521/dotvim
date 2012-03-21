@@ -1,7 +1,7 @@
 """"""""""""""""""""""""""""""""""""""
 " Version: 1.0.1
 """"""""""""""""""""""""""""""""""""""
-" 2012-03-20 17:56
+" 2012-03-21 09:21
 """"""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""
@@ -621,7 +621,11 @@ imap - <M-->3<BS>
 " Ctags
 """"""""""""""""""""""""""""""""""""""
 "ctags -R --c-kinds=+p --fields=+iaS --extra=+q -f ~/.tags/systags /usr/include /usr/local/include
-set tags+=~/.tags/systags
+if MySys() == 'linux'
+	set tags+=~/.tags/systags
+elseif MySys() == 'windows'
+	set tags+=~/_tags/systags
+endif
 
 """"""""""""""""""""""""""""""""""""""
 " The end 
