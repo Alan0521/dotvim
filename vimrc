@@ -1,7 +1,7 @@
 """"""""""""""""""""""""""""""""""""""
 " Version: 1.0.1
 """"""""""""""""""""""""""""""""""""""
-" 2012-03-21 09:21
+" 2012-03-22 17:54
 """"""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""
@@ -614,8 +614,12 @@ let g:completekey = "<C-j>"
 """"""""""""""""""""""""""""""""""""""
 " Code_complete
 """"""""""""""""""""""""""""""""""""""
-imap = <M-=>3<BS>
-imap - <M-->3<BS>
+if MySys() == 'linux'
+	if !has("gui_running")
+		imap = <M-=>3<BS>
+		imap - <M-->3<BS>
+	endif
+endif
 
 """"""""""""""""""""""""""""""""""""""
 " Ctags
@@ -626,6 +630,41 @@ if MySys() == 'linux'
 elseif MySys() == 'windows'
 	set tags+=~/_tags/systags
 endif
+
+" UpdateCtags
+function! UpdateCtags()
+	!ctags -R --c++-types=+px --excmd=pattern --exclude=Makefile --exclude=.
+endfunction
+"function! UpdateCtags()
+	"let curdir=getcwd()
+	"while !filereadable("./tags")
+		"cd ..
+		"if getcwd() == "/"
+			"break
+		"endif
+	"endwhile
+	"if filewritable("./tags")
+		"!ctags -R --c++-types=+px --excmd=pattern --exclude=Makefile --exclude=.
+	"endif
+	"execute ":cd " . curdir
+"endfunction
+
+" Call Function
+command! UpdateCtags call UpdateCtags()
+
+" AutoUpdateCtags
+let g:AutoUpdateCtagsEnable = 1
+command! AutoUpdateCtagsEnable let g:AutoUpdateCtagsEnable = 1
+command! AutoUpdateCtagsDisable let g:AutoUpdateCtagsEnable = 0
+
+"function! AutoUpdateCtags()
+	"if g:AutoUpdateCtagsEnable == 1
+		"call UpdateCtags()
+	"endif
+"endfunction
+
+"autocmd BufWrite *.cpp,*.h,*.c call AutoUpdateCtags()
+autocmd BufWrite *.cpp,*.h,*.c call if g:AutoUpdateCtagsEnable == 1 call UpdateCtags() endif
 
 """"""""""""""""""""""""""""""""""""""
 " The end 
