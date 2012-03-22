@@ -1,7 +1,7 @@
 """"""""""""""""""""""""""""""""""""""
 " Version: 1.0.1
 """"""""""""""""""""""""""""""""""""""
-" 2012-03-22 17:54
+" 2012-03-22 21:25
 """"""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""
@@ -633,7 +633,8 @@ endif
 
 " UpdateCtags
 function! UpdateCtags()
-	!ctags -R --c++-types=+px --excmd=pattern --exclude=Makefile --exclude=.
+	!ctags -R --c-kinds=+p --fields=+iaS --extra=+q 
+	"!ctags -R --c++-types=+px --excmd=pattern --exclude=Makefile --exclude=.
 endfunction
 "function! UpdateCtags()
 	"let curdir=getcwd()
@@ -657,14 +658,13 @@ let g:AutoUpdateCtagsEnable = 1
 command! AutoUpdateCtagsEnable let g:AutoUpdateCtagsEnable = 1
 command! AutoUpdateCtagsDisable let g:AutoUpdateCtagsEnable = 0
 
-"function! AutoUpdateCtags()
-	"if g:AutoUpdateCtagsEnable == 1
-		"call UpdateCtags()
-	"endif
-"endfunction
+function! AutoUpdateCtags()
+	if g:AutoUpdateCtagsEnable == 1
+		call UpdateCtags()
+	endif
+endfunction
 
-"autocmd BufWrite *.cpp,*.h,*.c call AutoUpdateCtags()
-autocmd BufWrite *.cpp,*.h,*.c call if g:AutoUpdateCtagsEnable == 1 call UpdateCtags() endif
+autocmd BufWrite *.cpp,*.h,*.c call AutoUpdateCtags() 
 
 """"""""""""""""""""""""""""""""""""""
 " The end 
