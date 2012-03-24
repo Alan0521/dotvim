@@ -1,7 +1,7 @@
 """"""""""""""""""""""""""""""""""""""
 " Version: 1.0.1
 """"""""""""""""""""""""""""""""""""""
-" 2012-03-24 19:38
+" 2012-03-24 20:55
 """"""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""
@@ -231,6 +231,12 @@ endif
 "autocmd BufWritePre .vimrc execute '/\" *The end/s@:.*$@\=strftime(":\t%Y-%m-%d %H:%M")@'
 "autocmd BufWritePre .vimrc execute "normal Gkc$\" \<C-R>=\strftime(\"%Y-%m-%d %H:%M\")\<CR>\<ESC>"
 autocmd BufWritePre *vimrc execute "normal ggjjjc$\" \<C-R>=\strftime(\"%Y-%m-%d %H:%M\")\<CR>\<ESC>\<C-o>"
+"autocmd BufWritePre *vimrc call UpdateVimrcTime()
+
+"function! UpdateVimrcTime()
+	"execute "normal ggjjjc$\" \<C-R>=\strftime(\"%Y-%m-%d %H:%M\")\<CR>\<ESC>\<C-o>"
+	"source ~/.vimrc
+"endfunction
 
 "进行版权声明的设置
 "添加或更新头
@@ -669,3 +675,7 @@ autocmd BufWrite *.cpp,*.h,*.c call AutoUpdateCtags()
 """"""""""""""""""""""""""""""""""""""
 " The end 
 """"""""""""""""""""""""""""""""""""""
+
+
+
+
