@@ -1,7 +1,7 @@
 """"""""""""""""""""""""""""""""""""""
 " Version: 1.0.1
 """"""""""""""""""""""""""""""""""""""
-" 2012-03-22 21:25
+" 2012-03-24 19:38
 """"""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""
@@ -230,7 +230,7 @@ endif
 "autocmd BufWritePre .vimrc execute '<ESC>Go<C-R>=strftime("%c")<CR><ESC>'
 "autocmd BufWritePre .vimrc execute '/\" *The end/s@:.*$@\=strftime(":\t%Y-%m-%d %H:%M")@'
 "autocmd BufWritePre .vimrc execute "normal Gkc$\" \<C-R>=\strftime(\"%Y-%m-%d %H:%M\")\<CR>\<ESC>"
-autocmd BufWritePre *vimrc execute "normal ggjjjc$\" \<C-R>=\strftime(\"%Y-%m-%d %H:%M\")\<CR>\<ESC>"
+autocmd BufWritePre *vimrc execute "normal ggjjjc$\" \<C-R>=\strftime(\"%Y-%m-%d %H:%M\")\<CR>\<ESC>\<C-o>"
 
 "进行版权声明的设置
 "添加或更新头
@@ -270,7 +270,7 @@ function! TitleDet()
     while n < 10
         let line = getline(n)
         if line =~ '^\//\s*\S*Last\smodified:\S*.*$'
-            call UpdateTitle()
+           call UpdateTitle()
             return
         endif
         let n = n + 1
@@ -624,7 +624,7 @@ endif
 """"""""""""""""""""""""""""""""""""""
 " Ctags
 """"""""""""""""""""""""""""""""""""""
-"ctags -R --c-kinds=+p --fields=+iaS --extra=+q -f ~/.tags/systags /usr/include /usr/local/include
+"ctags -R --c++-kinds=+p --fields=+iaS --extra=+q -f ~/.tags/systags /usr/include /usr/local/include
 if MySys() == 'linux'
 	set tags+=~/.tags/systags
 elseif MySys() == 'windows'
@@ -633,7 +633,7 @@ endif
 
 " UpdateCtags
 function! UpdateCtags()
-	!ctags -R --c-kinds=+p --fields=+iaS --extra=+q 
+	!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q 
 	"!ctags -R --c++-types=+px --excmd=pattern --exclude=Makefile --exclude=.
 endfunction
 "function! UpdateCtags()
