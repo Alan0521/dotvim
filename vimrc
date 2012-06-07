@@ -1,7 +1,7 @@
 """"""""""""""""""""""""""""""""""""""
 " Version: 1.0.1
 """"""""""""""""""""""""""""""""""""""
-" 2012-03-24 20:55
+" 2012-04-13 09:43
 """"""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""
@@ -660,7 +660,7 @@ endfunction
 command! UpdateCtags call UpdateCtags()
 
 " AutoUpdateCtags
-let g:AutoUpdateCtagsEnable = 1
+let g:AutoUpdateCtagsEnable = 0
 command! AutoUpdateCtagsEnable let g:AutoUpdateCtagsEnable = 1
 command! AutoUpdateCtagsDisable let g:AutoUpdateCtagsEnable = 0
 

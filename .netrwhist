@@ -1,9 +1,7 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =7
-let g:netrw_dirhist_1='/home/alan/Desktop/test'
-let g:netrw_dirhist_2='/home/alan/shortcut/my_drivers/hello_world'
-let g:netrw_dirhist_3='/home/alan/.vim/bundle/snipmate/plugin'
-let g:netrw_dirhist_4='/mnt/hgfs/vm_share/_vim'
-let g:netrw_dirhist_5='/projects/freerunner/source/.repo'
-let g:netrw_dirhist_6='/etc/java-6-openjdk'
-let g:netrw_dirhist_7='/home/alan/Public/libnet/doc'
+let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_1='/projects/8829/source/release_v1.0.8_r1151/umon_main'
+let g:netrw_dirhist_2='/projects/eth_plc'
+let g:netrw_dirhist_3='/projects/6750/onu_apps/onu_apps/apps/opconn/meter'
+let g:netrw_dirhist_4='/projects/6750/onu_apps'
+let g:netrw_dirhist_5='/projects/8829/source/release_v1.0.8_r1151/umon_main'
