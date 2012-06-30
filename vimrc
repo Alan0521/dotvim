@@ -1,7 +1,7 @@
 """"""""""""""""""""""""""""""""""""""
 " Version: 1.0.1
 """"""""""""""""""""""""""""""""""""""
-" 2012-04-13 09:43
+" 2012-06-30 20:03
 """"""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""
@@ -50,7 +50,9 @@ let g:mapleader=","
 let g:C_MapLeader=","
 "switch case对齐
 set cino=:0g0t0(sus
-set textwidth=0
+"set textwidth=0
+set textwidth=80
+set cc=+1
 set wrapmargin=0
 "auto trailing whitespace
 autocmd BufWritePre *.c :%s/\s\+$//e
@@ -671,6 +673,19 @@ function! AutoUpdateCtags()
 endfunction
 
 autocmd BufWrite *.cpp,*.h,*.c call AutoUpdateCtags() 
+
+""""""""""""""""""""""""""""""""""""""
+" Indent_guides
+""""""""""""""""""""""""""""""""""""""
+let g:indent_guides_guide_size = 1
+set et
+
+if has('gui_running')
+
+else
+    hi IndentGuidesOdd  ctermbg=black
+    hi IndentGuidesEven ctermbg=darkgrey
+endif
 
 """"""""""""""""""""""""""""""""""""""
 " The end 
