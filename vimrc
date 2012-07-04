@@ -1,7 +1,7 @@
 """"""""""""""""""""""""""""""""""""""
 " Version: 1.0.1
 """"""""""""""""""""""""""""""""""""""
-" 2012-06-30 20:03
+" 2012-07-04 16:49
 """"""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""
@@ -673,6 +673,26 @@ function! AutoUpdateCtags()
 endfunction
 
 autocmd BufWrite *.cpp,*.h,*.c call AutoUpdateCtags() 
+
+""""""""""""""""""""""""""""""""""""""
+" Cscope
+""""""""""""""""""""""""""""""""""""""
+function! Do_CsTag()
+    if(executable('cscope') && has("cscope") )
+        if MySys() == 'linux'
+            silent! execute "!find . -name '*.h' -o -name '*.c' -o -name '*.cpp' -o -name '*.java' -o -name '*.cs' > cscope.files"
+        else
+            silent! execute "!dir /b *.c,*.cpp,*.h,*.java,*.cs > cscope.files"
+        endif
+        silent! execute "!cscope -bkq -i cscope.files"
+        "if filereadable("cscope.out")
+            "execute "cs add cscope.out"
+        "endif
+    endif
+endf
+
+command! UpdateCscope call Do_CsTag() 
+command! AddCscope execute "cs add cscope.out"
 
 """"""""""""""""""""""""""""""""""""""
 " Indent_guides
