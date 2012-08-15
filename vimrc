@@ -1,7 +1,7 @@
 """"""""""""""""""""""""""""""""""""""
 " Version: 1.0.1
 """"""""""""""""""""""""""""""""""""""
-" 2012-07-04 16:49
+" 2012-07-27 16:29
 """"""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""
@@ -52,7 +52,7 @@ let g:C_MapLeader=","
 set cino=:0g0t0(sus
 "set textwidth=0
 set textwidth=80
-set cc=+1
+"set cc=+1
 set wrapmargin=0
 "auto trailing whitespace
 autocmd BufWritePre *.c :%s/\s\+$//e
